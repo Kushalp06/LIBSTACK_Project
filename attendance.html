@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="" type="image/x-icon">
+    <title>Libstack</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib-style.css">
+    <link rel="stylesheet" type="text/css" href="css/lib-theme2.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+     -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+</head>
+<body class="light sidebar-mini sidebar-collapse">
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="app">
+<aside class="main-sidebar fixed offcanvas b-r sidebar-tabs" data-toggle='offcanvas'>
+    <div class="sidebar">
+        <div class="d-flex hv-100 align-items-stretch">
+            <div class="indigo text-white">
+                <div class="nav mt-5 pt-5 flex-column nav-pills" id="v-pills-tab" role="tablist"
+                     aria-orientation="vertical">
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                       aria-controls="v-pills-home" aria-selected="true"><i class="icon-inbox2"></i></a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                       aria-controls="v-pills-profile" aria-selected="false"><i class="icon-add"></i></a>
+                    <a class="nav-link blink skin_handle"  href="#"><i class="icon-lightbulb_outline"></i></a>
+                    <a class="nav-link" id="v-pills-messages-tab" href="#"><i class="icon-message"></i></a>
+                    <a class="nav-link" id="v-pills-settings-tab" href="#"><i class="icon-settings"></i></a>
+                    <a href="teacher_dash.html">
+                        <figure class="avatar">
+                            <img src="assets/img/dummy/u3.png" alt="">
+                            <span class="avatar-badge online"></span>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            <div class="tab-content flex-grow-1" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                     aria-labelledby="v-pills-home-tab">
+                    <div class="relative brand-wrapper sticky b-b">
+                        <div class="d-flex justify-content-between align-items-center p-3">
+                            <div class="text-xs-center">
+                                <span class="font-weight-lighter s-18">Menu</span>
+                            </div>
+                            <!-- <div class="badge badge-danger r-0"></div> -->
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <!-- <li class="treeview">
+                            <a href="dash.html">
+                            <i class="icon icon-sailing-boat-water s-24"></i> <span>Libstack</span>
+                            </a>
+                        </li> -->
+                        <li class="treeview"><a href="#"><i class="icon icon-sailing-boat-water s-24"></i>Libstack<i
+                            class=" icon-angle-left  pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="attendance.html"><i class="icon icon-circle-o"></i>Attendence Analysis</a>
+                            </li>
+                            <li><a href="notes.html"><i class="icon icon-add"></i>Note Sharing<i
+                                class=" icon-angle-left  pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="upload.html"><i class="icon icon-circle-o"></i>Upload Notes</a>
+                                    </li>
+                                    <li><a href="download.html"><i class="icon icon-circle-o"></i>Download Notes</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="Result.html"><i class="icon icon-user"></i>Result Analysis </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="calendar.html">
+                        <i class="icon-calendar s-24"></i> <span>Calendar</span>
+                        </a>
+                    </li>
+                        <li class="treeview">
+                            <a href="tasks.html">
+                            <i class="icon icon-documents3 s-24"></i> <span>To Do lists</span>
+                            </a>
+                        </li>
+    
+                        <li class="treeview">
+                            <a href="#">
+                            <i class="icon icon-documents3 s-24"></i> <span>Forms</span>
+                            </a>
+                        </li>
+                            </ul>
+                        </li>
+                        
+                        
+                           
+                        </li>
+        
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="relative brand-wrapper sticky b-b p-3">
+                        <form>
+                            <div class="form-group input-group-sm has-right-icon">
+                                <input class="form-control form-control-sm light r-30" placeholder="Search" type="text">
+                                <i class="icon-search"></i>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sticky slimScroll">
+
+                        <div class="p-2">
+                            <ul class="list-unstyled">
+                                <!-- Alphabet with number of contacts -->
+                                <li class="pt-3 pb-3 sticky p-3 b-b white">
+                                    <span class="badge r-3 badge-success">A</span>
+                                </li>
+                                <!-- Single contact -->
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="assets/img/dummy/u6.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Aryakumar Patel</strong>
+                                                </div>
+                                                <small> aryapatel@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong></strong>
+                                                </div>
+                                                <small> </small>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </li> -->
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                             <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong></strong>
+                                                </div>
+                                                <small></small>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                            <ul class="list-unstyled">
+                                <li class="pt-3 pb-3 sticky p-3 b-b white">
+                                    <span class="badge r-3 badge-danger">D</span>
+                                </li>
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="assets/img/dummy/u2.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Diksha Rajput</strong>
+                                                </div>
+                                                <small> Diksha@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u3.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u4.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                            <ul class="list-unstyled">
+                                <!-- Alphabet with number of contacts -->
+                                <li class="pt-3 pb-3 sticky p-3 b-b white">
+                                    <span class="badge r-3 badge-success gradient">K</span>
+                                </li>
+                                <!-- Single contact -->
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="assets/img/dummy/u1.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Kushal Patel</strong>
+                                                </div>
+                                                <small> Kushal@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u6.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u6.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li> -->
+                                <!-- <li class="my-4">
+                                    <span class="badge r-3 badge-danger purple">D</span>
+                                </li>
+                                <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u2.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>  -->
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u3.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li> -->
+                                <!-- <li class="my-1">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="../static/assets/img/dummy/u4.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Alexander Pierce</strong>
+                                                </div>
+                                                <small> alexander@paper.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li> -->
+                            <!-- </ul> -->
+                            <ul class="list-unstyled">
+                                <!-- Alphabet with number of contacts -->
+                                <li class="pt-3 pb-3 sticky p-3 b-b white">
+                                    <span class="badge r-3 badge-success gradient">R</span>
+                                </li>
+                                <!-- Single contact -->
+                                <li class="my-4">
+                                    <div class="card no-b p-3">
+                                        <div class="">
+
+                                            <div class="image mr-3  float-left">
+                                                <img class="w-40px" src="assets/img/dummy/u1.png" alt="User Image">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <strong>Rutuja Bansode</strong>
+                                                </div>
+                                                <small> rutuja@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<div class="has-sidebar-left">
+    <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark pt-2 pb-2 pl-4 pr-2">
+            <div class="search-bar">
+                <input class="transparent s-24 text-white b-0 font-weight-lighter w-128 height-50" type="text"
+                       placeholder="start typing...">
+            </div>
+            <a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false"
+               aria-label="Toggle navigation" class="paper-nav-toggle paper-nav-white active "><i></i></a>
+        </div>
+    </div>
+</div>
+</div>
+<a href="#" data-toggle="push-menu" class="paper-nav-toggle left ml-2 fixed">
+    <i></i>
+</a>
+<div class="has-sidebar-left has-sidebar-tabs">
+    <!--navbar-->
+    <div class="sticky">
+        <div class="navbar navbar-expand d-flex justify-content-between bd-navbar white shadow">
+            <div class="relative">
+                <div class="d-flex">
+                    <div class="d-none d-md-block">
+                        <h1 class="nav-title">Attendence Analysis</h1>
+                    </div>
+                </div>
+            </div>
+            <!--Top Menu Start -->
+<div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+        <!-- <a href="/result"><button type="button" class="btn btn-secondary">Results</button></a> -->
+        <!-- Messages-->
+        <li class="dropdown custom-dropdown messages-menu">
+            <a href="#" class="nav-link" data-toggle="dropdown">
+                <i class="icon-envelope-o"></i>
+                <span class="badge badge-success badge-mini rounded-circle">4</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu pl-2 pr-2">
+                        <!-- start message -->
+                        <li>
+                            <a href="#">
+                                <div class="avatar float-left">
+                                    <img src="assets/img/dummy/u4.png" alt="">
+                                    <span class="avatar-badge busy"></span>
+                                </div>
+                                <h4>
+                                    Kushal Patel
+                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                </h4>
+                                <p>Notes are available!</p>
+                            </a>
+                        </li>
+                        <!-- end message -->
+                        <!-- start message -->
+                        <li>
+                            <a href="#">
+                                <div class="avatar float-left">
+                                    <img src="assets/img/dummy/u1.png" alt="">
+                                    <span class="avatar-badge online"></span>
+                                </div>
+                                <h4>
+                                    Aryakumar Patel
+                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                </h4>
+                                <p>Hi ! I have some notes for you.</p>
+                            </a>
+                        </li>
+                        <!-- end message -->
+                        <!-- start message -->
+                        <li>
+                            <a href="#">
+                                <div class="avatar float-left">
+                                    <img src="assets/img/dummy/u2.png" alt="">
+                                    <span class="avatar-badge idle"></span>
+                                </div>
+                                <h4>
+                                   Diksha Rajput
+                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                </h4>
+                                <p>Have you completed your homework?</p>
+                            </a>
+                        </li>
+                        <!-- end message -->
+                        <!-- start message -->
+                        <li>
+                            <a href="#">
+                                <div class="avatar float-left">
+                                    <img src="assets/img/dummy/u3.png" alt="">
+                                    <span class="avatar-badge busy"></span>
+                                </div>
+                                <h4>
+                                    Attendence System
+                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                </h4>
+                                <p>5 students are absent.</p>
+                            </a>
+                        </li>
+                        <!-- end message -->
+                    </ul>
+                </li>
+                <li class="footer s-12 p-2 text-center"><a href="#">See All Messages</a></li>
+            </ul>
+        </li>
+        <!-- Notifications -->
+        <li class="dropdown custom-dropdown notifications-menu">
+            <a href="#" class=" nav-link" data-toggle="dropdown" aria-expanded="false">
+                <i class="icon-notifications_none"></i>
+                <span class="badge badge-danger badge-mini rounded-circle">4</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li class="header">You have 10 notifications</li>
+                <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                        <li>
+                            <a href="#">
+                                <i class="icon icon-data_usage text-success"></i> 5 new members joined today
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon icon-data_usage text-danger"></i> 5 new members joined today
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon icon-data_usage text-yellow"></i> 5 new members joined today
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footer p-2 text-center"><a href="#">View all</a></li>
+            </ul>
+        </li>
+        
+        <!-- Right Sidebar Toggle Button -->
+        
+        <!-- User Account-->
+        <li class="dropdown custom-dropdown user user-menu ">
+            <a href="#" class="nav-link" data-toggle="dropdown">
+                <img src="assets/img/dummy/u8.png" class="user-image" alt="User Image">
+                <i class="icon-more_vert "></i>
+            </a>
+            <div class="dropdown-menu p-4 dropdown-menu-right">
+                <div class="row box justify-content-between my-4">
+                    <div class="col">
+                        <a href="#">
+                            <a href="index.html"> <button type="button" class="btn btn-primary waves-effect waves-light">Logout</button></a>
+                        </a>
+                    </div>
+                   
+            </div>
+        </li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <!--#navbar-->
+    <div class="container-fluid relative animatedParent animateOnce my-3">
+        <div class="row row-eq-height my-3 mt-3">
+           
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+
+            </div>
+            <!-- <div class="card-body">
+                <div class="content-page">   
+                        <div class="content"> -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="m-b-30">
+
+                                            <form action="/attendance" method="post">
+                                                <div class="form-group">
+                                                    <label for="student_id">Student ID:</label>
+                                                    <input type="text" id="student_id" name="student_id" required class="form-control" 
+                                                        placeholder="Enter your Student ID" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="start_date">Start Date:</label>
+                                                    <input type="text" id="start_date" name="start_date" required class="form-control" 
+                                                        placeholder="Enter your Start date" >
+                                                </div>
+                                              
+                                              
+                                                <button type="submit" class="btn btn-primary">Generate Attendance Plot</button>
+                                            </form>
+                                        </div><br>
+        
+                                        <!-- <div class="text-center m-t-15">
+                                                  <button type="button" class="btn btn-primary waves-effect waves-light">Analyse The Attendance</button>
+                                          </div> -->
+                                    </div>
+                                </div> 
+            </div>
+        </div>
+
+        <div class=" row my-3">
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-6">
+              
+
+    </div>
+</div>
+
+<!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+<div class="control-sidebar-bg shadow white fixed"></div>
+</div>
+<!--/#app -->
+<script src="assets/js/app.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="cleave.min.js"></script>
+</body>
+</html>
